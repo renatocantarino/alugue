@@ -1,4 +1,4 @@
-# alugue
+# alugAKI
 
 1. React native
 2. Gesture Handlers
