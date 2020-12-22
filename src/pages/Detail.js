@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Button, TouchableOpacity, ToastAndroid } from 'react-native';
 import { ScrollView } from "react-native-gesture-handler";
 import { Ionicons } from '@expo/vector-icons';
 import Stars from 'react-native-stars';
@@ -9,8 +9,19 @@ import Comment from '../components/Comment';
 
 
 export default function Detail() {
-    return (
 
+    const showToast = (msg) => {
+        ToastAndroid.showWithGravity(msg, ToastAndroid.CENTER, 25,
+            50);
+    };
+
+    function handleAlugar() {
+        showToast("Obrigado por alugar esta casa");
+
+    }
+
+
+    return (
         <ScrollView showsVerticalScrollIndicator={false}
             style={{ backgroundColor: '#FFF' }} >
             <View style={styles.container}>
@@ -56,7 +67,9 @@ export default function Detail() {
                 <Comment Text='As 3 da manhã, escutamos Choro de criança na sala' />
 
 
-                <TouchableOpacity onPress={() => {}} style={styles.appButtonContainer}>
+                <TouchableOpacity
+                    onPress={handleAlugar}
+                    style={styles.appButtonContainer}>
                     <Text style={styles.appButtonText}>Alugar</Text>
                 </TouchableOpacity>
             </View>
@@ -69,11 +82,11 @@ export default function Detail() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FFF'
+        backgroundColor: '#FFF'        
     },
     swiperContent: {
         flexDirection: 'row',
-        height: 340,
+        height: 330,
         width: '100%',
     },
     headerContent: {
@@ -136,14 +149,14 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 12,
         width: 350,
-        marginTop: 10,
+        marginTop: 5,
         alignSelf: "center",
-      },
-      appButtonText: {
+    },
+    appButtonText: {
         fontSize: 18,
         color: "#fff",
         fontWeight: "bold",
         alignSelf: "center",
         textTransform: "uppercase"
-      }
+    }
 });
